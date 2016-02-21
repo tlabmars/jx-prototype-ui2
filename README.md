@@ -23,5 +23,5 @@ Les modèles des écrans se trouvent dans [ce fichier](https://drive.google.com/
 
 Pour les icônes, utiliser [Fontawesome](https://github.com/FortAwesome/Font-Awesome).
 
-La police de caractères utilisée dans les wireframes est [Inconsolata](https://www.google.com/fonts#UsePlace:use/Collection:Inconsolata).
+La police de caractères utilisée dans les modèles d'écrans est [Inconsolata](https://www.google.com/fonts#UsePlace:use/Collection:Inconsolata).
 
