@@ -7,6 +7,8 @@ Tester différentes options pour le développement de l'interface utilisateur av
 ## Objectif 
 Créer 2 pages HTML responsive pour mobile en intégrant [Leaflet JS](), avec un fond de carte [Toner de Stamen Maps](http://maps.stamen.com/#toner). Les pages doivent s’adapter à la taille de l’écran (largeur et hauteur). 
 
+Vous pouvez si vous le souhaitez faire un essai avec Angular JS.
+
 Une fois les pages finalisées, **évaluer Leaftlet JS**, dans [ce fichier partagé](https://docs.google.com/spreadsheets/d/1PLk_t06cJYFFnptmJ9iQJ29lL3RLZevWsyzgfyRBBQc/edit?usp=sharing) : 
 - La librairie est-elle facile à prendre en main, à utiliser ? 
 - Est-elle conçue pour optimiser les performances d’affichage (champ taille des fichiers CSS / JS) ? 
