@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <!-- Standard Meta -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+        <!-- Site Properties -->
+        <title>JX UI #2 - Map :: tlab.mars</title>
+
+        <!-- PURE & LEAFLET CSS -->
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+
+        <!-- JQUERY, LEAFLET, STAMEN MAPS JS-->
+        <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>        
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+
+
+        <!-- GOOGLE & FONTAWESOME FONTS -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,700&subset=latin" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
+        <style type="text/css">
+            .pure-g [class *="pure-u"] {
+                font-family: 'Inconsolata', sans-serif;
+            }
+            .pure-g {
+                background-color: whitesmoke;
+            }
+
+            @media screen and (max-width: 35.5em){
+
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="pure-g">
+            <div id="map" class="pure-u-1"></div>
+        </div>
+
+
+        <script>
+            $(document).ready(function() {               
+                function setDimensions() {
+                    windowHeight = $(window).innerHeight();
+                    windowWidth = $(window).innerWidth();
+                    $('.pure-g').css('min-height', windowHeight);
+                    $('#map').css('min-height', windowHeight);
+                    $('#map').css('width', windowWidth);
+
+
+                }
+
+                setDimensions();   
+
+                $(window).resize(function() {
+                    setDimensions();
+                });    
+
+                var layer = new L.StamenTileLayer("toner");
+                var map = new L.Map("map", {
+                    center: new L.LatLng(43.3046, 5.3655),
+                    zoom: 18
+                });
+                map.addLayer(layer);
+                map.locate({setView: true, watch: true, maxZoom: 15});
+                function onLocationFound(e) {
+                    var radius = e.accuracy;
+
+                    L.marker(e.latlng, {icon: hereIcon}).addTo(map)
+                        .bindPopup("Vous êtes ici ! <br /> À plus ou moins " + radius + " mètres.<br /> <strong>En route !</strong>").openPopup();
+
+                }
+
+                map.on('locationfound', onLocationFound);
+
+
+                var orangeIcon = L.icon({
+                    iconUrl: 'marker-orange.png',
+                    shadowUrl: 'marker-shadow.png',
+
+                    iconSize:     [32, 49], // size of the icon
+                    shadowSize:   [50, 50], // size of the shadow
+                    iconAnchor:   [4, 60], // point of the icon which will correspond to marker's location
+                    shadowAnchor: [4, 62],  // the same for the shadow
+                    popupAnchor:  [10, -65] // point from which the popup should open relative to the iconAnchor
+                });
+
+                var blackIcon = L.icon({
+                    iconUrl: 'marker-black.png',
+                    shadowUrl: 'marker-shadow.png',
+
+                    iconSize:     [32, 49], // size of the icon
+                    shadowSize:   [50, 50], // size of the shadow
+                    iconAnchor:   [4, 60], // point of the icon which will correspond to marker's location
+                    shadowAnchor: [4, 62],  // the same for the shadow
+                    popupAnchor:  [10, -65] // point from which the popup should open relative to the iconAnchor
+                });
+
+                var hereIcon = L.icon({
+                    iconUrl: 'marker-here.png',
+
+                    iconSize:     [40, 40], // size of the icon
+                    iconAnchor:   [15, 20], // point of the icon which will correspond to marker's location
+                    popupAnchor:  [4, 0] // point from which the popup should open relative to the iconAnchor
+                });
+
+                var marker1 = L.marker([43.3046, 5.3655], {icon: orangeIcon}).addTo(map).bindPopup("Ici tout commence et tout finit.").openPopup();
+                var marker2 = L.marker([43.3053, 5.3658], {icon: blackIcon}).addTo(map);
+                var marker3 = L.marker([43.3052, 5.3664], {icon: blackIcon}).addTo(map);
+                var marker4 = L.marker([43.3050, 5.3669], {icon: blackIcon}).addTo(map);
+                var marker5 = L.marker([43.3049, 5.3658], {icon: blackIcon}).addTo(map);
+                
+                marker4.on('click', function() {
+                    window.location.href = '../1/story.html';
+                });
+                marker2.on('click', function() {
+                    window.location.href = 'poi.html';
+                });
+                
+            });
+
+        </script>
+
+
+    </body>
+</html>
